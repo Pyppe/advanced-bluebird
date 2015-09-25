@@ -9,7 +9,10 @@ var Promise = require("bluebird");
 */
 
 module.exports = function(fileName, encoding) {
-    return new Promise(function(resolve, reject) {
-        // Implementation
+  return new Promise(function(resolve, reject) {
+    fs.readFile(fileName, encoding, function(err, result) {
+      if (err) reject(err);
+      else resolve(result);
     });
+  });
 };
